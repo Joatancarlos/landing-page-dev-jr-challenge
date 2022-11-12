@@ -33,7 +33,7 @@
 /* -------------------------------- HEADER -------------------------------- */
 
 .header {
-    background: #707070 0% 0% no-repeat padding-box;
+    background-color: var(--primary-color);
     color: #fff;
     text-align: center;
     padding: 80px 0;
