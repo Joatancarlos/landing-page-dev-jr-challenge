@@ -79,6 +79,18 @@ body {
 }
 
 
+.form .input {
+    width: 100%;
+    padding: 5px;
+}
+
+.form .label {
+    display: block;
+    font-size: .8rem;
+    margin-bottom: 10px;
+}
+
+
 /* -------------------------------- ABOUT -------------------------------- */
 
 .about {
@@ -117,16 +129,6 @@ body {
     margin-bottom: 20px;
 }
 
-.about .div-form .form .input {
-    width: 100%;
-    padding: 5px;
-}
-
-.about .div-form .form .label {
-    display: block;
-    font-size: .8rem;
-    margin-bottom: 10px;
-}
 
 .about .div-form .form label[for=gender] {
     margin-right: 20px;
@@ -186,4 +188,34 @@ body {
 .collection > .btn {
     width: 300px;
     margin-bottom: 100px;
+}
+
+
+/* -------------------------------- SHARE -------------------------------- */
+.share {
+    text-align: center;
+}
+
+.share .form .inputs-flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.share .form .inputs-flex label {
+    text-align: left;
+}
+
+.share .form .inputs-flex > div {
+    width: 45%;
+}
+
+.share .btn {
+    width: 300px;
+}
+
+.share .seperator,
+.share > p,
+.share .form,
+.share .form .inputs-flex {
+    margin-bottom: 40px;
 }
