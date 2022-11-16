@@ -9,6 +9,10 @@
     --primary-color: #707070;
 }
 
+body {
+    color: var(--primary-color);
+}
+
 .container {
     width: 950px;
     margin: 0 auto;
@@ -81,8 +85,7 @@
     --width-flex: 60%;
     display: flex;
     justify-content: space-between;
-    color: var(--primary-color);
-    padding: 20px;
+    padding: 20px 0;
 }
 
 .about .text {
@@ -131,4 +134,56 @@
 
 
 /* -------------------------------- PRODUCTS -------------------------------- */
+.collection {
+    text-align: center;
+}
 
+.collection .seperator{
+    padding: 40px 0;
+}
+
+
+.collection .products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: left;
+}
+
+.collection .products .product {
+    width: 21%;
+    padding-bottom: 50px;
+    font-size: .9rem;
+}
+
+.collection .products .product .image img {
+    --img-width: 100%;
+    width: var(--img-width);
+    height: var(--img-width);
+}
+
+.collection .products .product .product-title {
+    font-weight: 400;
+}
+
+.collection .products .product .product-description {
+    font-size: .8rem;
+}
+
+.collection .products .product .after-price {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.collection .products .product .product-title,
+.collection .products .product .product-description,
+.collection .products .product .before-price,
+.collection .products .product .after-price {
+    margin: 10px 0;
+}
+
+
+.collection > .btn {
+    width: 300px;
+    margin-bottom: 100px;
+}
