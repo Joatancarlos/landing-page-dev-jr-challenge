@@ -219,3 +219,19 @@ body {
 .share .form .inputs-flex {
     margin-bottom: 40px;
 }
+
+
+/* -------------------------------- FOOTER -------------------------------- */
+
+.footer {
+    background-color: var(--primary-color);
+    color: #fff;
+    height: 250px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.footer > div {
+    text-align: center;
+}
