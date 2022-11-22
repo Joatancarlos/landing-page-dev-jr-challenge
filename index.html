@@ -55,11 +55,14 @@
             </div>
 
             <div class="div-form">
-                <form class="form">
+                <form class="form" method="post">
                     <div>
                         <label for="name" class="label">Seu nome:</label>
                         <div>
                             <input type="text" name="name" id="name" class="input">
+                        </div>
+                        <div class="error">
+                            <span>Ops, verifique seu nome!</span>
                         </div>
                     </div>
                                 
@@ -68,6 +71,9 @@
                         <div>
                             <input type="email" name="email" id="email" class="input">
                         </div>
+                        <div class="error">
+                            <span>Atenção: email inválido</span>
+                        </div>
                     </div>
                                 
                     <div>
@@ -75,15 +81,18 @@
                         <div>
                             <input type="text" name="cpf" id="cpf" class="input">
                         </div>
+                        <div class="error">
+                            <span>CPF inválido</span>
+                        </div>
                     </div>
                     
                     <div>
-                        <input type="radio" name="gender" id="male">
+                        <input type="radio" name="gender" id="male" checked>
                         <label for="gender">Masculino</label>
                         <input type="radio" name="gender" id="female">
                         <label for="gender">Feminino</label>
                     </div>
-                    <button type="submit" class="btn">Enviar</button>
+                    <button type="submit" class="btn send">Enviar</button>
                 </form>
             </div>
         </section>
@@ -212,13 +221,16 @@
             <p>
                 Quer que seus amigos também ganhem a lista personalizada deles? Preencha agora!
             </p>
-            <form class="form">
+            <form class="form" method="post">
                 <div class="inputs-flex">
                     <div>
                         <label for="name-shr" class="label">
                             Nome do seu amigo:
                         </label>
                         <div><input type="text" name="name-shr" id="name-shr" class="input"></div>
+                        <div class="error">
+                            <span>Ops, verifique seu nome!</span>
+                        </div>
                     </div>              
                 
                     <div>
@@ -226,9 +238,12 @@
                             E-mail:
                         </label>
                         <div><input type="email" name="email-shr" id="email-shr" class="input"></div>
+                        <div class="error">
+                            <span>Atenção: seu email está incorreto</span>
+                        </div>
                     </div>
                 </div>
-                <button class="btn">Enviar agora</button>
+                <button class="btn send">Enviar agora</button>
             </form>
         </section>
     </main>
