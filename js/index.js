@@ -1,7 +1,8 @@
 let NodelistInputForms = document.querySelectorAll('form input')
 let listErroMessage = document.querySelectorAll('.error')
 let listBtnSend = document.querySelectorAll('.send')
-
+let divProducts = document.querySelector('.products')
+let btnMore = document.querySelector('#more')
 let arrInputAbout = Array.from(NodelistInputForms).filter(input => {
     if (input == NodelistInputForms[0] || input == NodelistInputForms[1] || input == NodelistInputForms[2]) return input 
 })
@@ -10,7 +11,23 @@ let arrInputShare = Array.from(NodelistInputForms).filter(input => {
     if (input == NodelistInputForms[5] || input == NodelistInputForms[6]) return input 
 })
 
-//console.log(arrInputAbout)
+
+let endPoint = 'https://frontend-intern-challenge-api.iurykrieger.vercel.app/products?page=1'
+
+const validarNome = (name) => {
+    let padrao1 = /[a-zA-Zá-ú]/g;
+    let padrao2 = /[0-9'"!@#$%&*()_+/,£¢¬§ªº°~^]/g
+
+    let resultado
+
+    if (name && padrao1.test(name) && !padrao2.test(name)) {
+        resultado = true
+    } else {
+        resultado = false
+    }
+    
+    return resultado
+}
 
 const validarCPF = (cpf) => {	
 	cpf = cpf.replace(/[^\d]+/g,'');	
@@ -55,7 +72,7 @@ const validation = (inputForm, inputValue) => {
     let regexEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     
     const validation = {
-        name: /\d/g,
+        name: validarNome(inputValue),
         cpf: validarCPF(inputValue),
         email: regexEmail,
         
@@ -91,18 +108,56 @@ const validation = (inputForm, inputValue) => {
             console.log('Something went wrong')
     }
 
-    if (inputForm === arrInputAbout[2]) {
-        return {
-            test: !regex,
-            divError: err
-        }
-    } else {
-        return {
-            test: regex.test(inputValue),
-            divError: err
-        }     
-    }
+    
+    return {
+        test: !regex,
+        divError: err
+    }     
+    
 
+}
+
+
+
+const getProducts = (url) => {
+
+    fetch(url, {
+        method: 'GET',
+    })
+    .then(res => res.json())
+    .then(data => {
+        let products = data.products
+        endPoint = `https://${data.nextPage}`
+        
+
+        products.forEach(product => {
+            divProducts.innerHTML += `
+                <div class="product">
+                    <div class="image">
+                        <img src=${product.image} alt="product image">
+                    </div>
+                    <h4 class="product-title">
+                        ${product.name}
+                    </h4>
+                    <p class="product-description">
+                        ${product.description}
+                    </p>
+                    <p class="before-price">
+                        De: R$ ${product.oldPrice}
+                    </p>
+                    <p class="after-price">
+                        Por: R$ ${product.price}
+                    </p>
+                    <p class="before-price">
+                        ou ${product.installments.count}x de  R$ ${product.installments.value}
+                    </p>
+                    <button class="btn">Comprar</button>
+                </div>
+            `
+        })  
+
+        
+    })
 }
 
 listBtnSend.forEach((botoes) => {
@@ -144,4 +199,12 @@ listBtnSend.forEach((botoes) => {
                
         })
     })
+})
+
+getProducts(endPoint)
+
+btnMore.addEventListener('click', (e) => {
+    e.preventDefault()
+
+    getProducts(endPoint)
 })
